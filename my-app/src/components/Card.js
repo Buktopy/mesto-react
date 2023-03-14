@@ -1,20 +1,25 @@
-function Card({ name, link, likes }) {
+function Card(card) {
+  function handleCardClick() {
+    card.onCardClick(card);
+  }
+
   return (
     <article className="card">
       <img
+        onClick={handleCardClick}
         className="card__image"
-        alt={name}
-        style={{ backgroundImage: `url(${link})` }}
+        alt={card.name}
+        style={{ backgroundImage: `url(${card.link})` }}
       />
       <div className="card__group">
-        <h2 className="card__title">{name}</h2>
+        <h2 className="card__title">{card.name}</h2>
         <div className="card__container">
           <button
             type="button"
             className="card__like"
             aria-label="Нравится"
           ></button>
-          <p className="card__like-counter">{likes.length}</p>
+          <p className="card__like-counter">{card.likes.length}</p>
         </div>
       </div>
       <button

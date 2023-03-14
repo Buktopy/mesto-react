@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import image from "../images/profile__image.jpg";
 import api from "../utilis/Api";
 import Card from "./Card";
 
-function Main({ onChangeAvatar, onEditProfile, onAddCard }) {
+function Main({ onChangeAvatar, onEditProfile, onAddCard, onCardClick }) {
   const [userName, setUserName] = React.useState("");
   const [userDescription, setUserDescription] = React.useState("");
   const [userAvatar, setUserAvatar] = React.useState("");
@@ -78,6 +77,7 @@ function Main({ onChangeAvatar, onEditProfile, onAddCard }) {
             name={card.name}
             link={card.link}
             likes={card.likes}
+            onCardClick={onCardClick}
           />
         ))}
       </section>

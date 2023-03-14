@@ -1,23 +1,24 @@
 import React from "react";
-import api from "../utilis/Api";
-import logo from "../logo.svg";
 import PopupWithForm from "./PopupWithForm";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
+import ImagePopup from "./ImagePopup";
 
 function App() {
-  const [PopupEditProfileVisibility, setPopupEditProfileVisibility] =
+  const [popupEditProfileVisibility, setPopupEditProfileVisibility] =
     React.useState(false);
-  const [PopupChangeAvatarVisibility, setPopupChangeAvatarVisibility] =
+  const [popupChangeAvatarVisibility, setPopupChangeAvatarVisibility] =
     React.useState(false);
-  const [PopupAddCardVisibility, setPopupAddCardVisibility] =
+  const [popupAddCardVisibility, setPopupAddCardVisibility] =
     React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
 
   function closeAllPopups() {
     setPopupEditProfileVisibility(false);
     setPopupChangeAvatarVisibility(false);
     setPopupAddCardVisibility(false);
+    setSelectedCard({});
   }
 
   return (
@@ -27,12 +28,14 @@ function App() {
         onEditProfile={setPopupEditProfileVisibility}
         onChangeAvatar={setPopupChangeAvatarVisibility}
         onAddCard={setPopupAddCardVisibility}
+        onCardClick={setSelectedCard}
       />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       <Footer />
       <PopupWithForm
         name="edit-profile"
         title="Редактировать профиль"
-        isOpened={PopupEditProfileVisibility}
+        isOpened={popupEditProfileVisibility}
         onClose={closeAllPopups}
       >
         <input
@@ -63,7 +66,7 @@ function App() {
       <PopupWithForm
         name="edit-avatar"
         title="Обновить аватар"
-        isOpened={PopupChangeAvatarVisibility}
+        isOpened={popupChangeAvatarVisibility}
         onClose={closeAllPopups}
       >
         <input
@@ -80,7 +83,7 @@ function App() {
       <PopupWithForm
         name="add-element"
         title="Новое место"
-        isOpened={PopupAddCardVisibility}
+        isOpened={popupAddCardVisibility}
         onClose={closeAllPopups}
       >
         <input
