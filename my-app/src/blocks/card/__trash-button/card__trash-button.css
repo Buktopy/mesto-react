@@ -1,4 +1,4 @@
-.element__trash-button {
+.card__trash-button {
     background: url(../../../images/trash-button.png) no-repeat center;
     object-fit: cover;
     box-sizing: border-box;
@@ -10,7 +10,7 @@
     border: none;
 }
 
-.element__trash-button:hover {
+.card__trash-button:hover {
     cursor: pointer;
     opacity: 0.5;
 }

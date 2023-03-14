@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import image from "../images/profile__image.jpg";
 import api from "../utilis/Api";
+import Card from "./Card";
 
 function Main({ onChangeAvatar, onEditProfile, onAddCard }) {
   const [userName, setUserName] = React.useState("");
   const [userDescription, setUserDescription] = React.useState("");
   const [userAvatar, setUserAvatar] = React.useState("");
+  const [cards, setCards] = React.useState([]);
 
   useEffect(() => {
     api
@@ -16,7 +18,21 @@ function Main({ onChangeAvatar, onEditProfile, onAddCard }) {
         setUserAvatar(profileInfo.avatar);
       })
       .catch((err) => console.log(err));
-  });
+
+    api
+      .getCard()
+      .then((cardsData) => {
+        setCards(
+          cardsData.map((data) => ({
+            cardId: data._id,
+            name: data.name,
+            link: data.link,
+            likes: data.likes,
+          }))
+        );
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <main className="content">
@@ -55,7 +71,16 @@ function Main({ onChangeAvatar, onEditProfile, onAddCard }) {
           aria-label="Добавить"
         ></button>
       </section>
-      <section className="elements"></section>
+      <section className="elements">
+        {cards.map((card) => (
+          <Card
+            key={card.cardId}
+            name={card.name}
+            link={card.link}
+            likes={card.likes}
+          />
+        ))}
+      </section>
     </main>
   );
 }
