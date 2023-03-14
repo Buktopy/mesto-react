@@ -1,26 +1,26 @@
 function Card({ name, link, likes }) {
   return (
-    <article className="element">
+    <article className="card">
       <img
-        className="element__image"
+        className="card__image"
         alt={name}
         style={{ backgroundImage: `url(${link})` }}
       />
-      <div className="element__group">
-        <h2 className="element__title">{name}</h2>
-        <div className="element__container">
+      <div className="card__group">
+        <h2 className="card__title">{name}</h2>
+        <div className="card__container">
           <button
             type="button"
-            className="element__like"
+            className="card__like"
             aria-label="Нравится"
           ></button>
-          <p className="element__like-counter">{likes.length}</p>
+          <p className="card__like-counter">{likes.length}</p>
         </div>
       </div>
       <button
         type="button"
         aria-label="Удалить элемент"
-        className="element__trash-button"
+        className="card__trash-button"
       ></button>
     </article>
   );

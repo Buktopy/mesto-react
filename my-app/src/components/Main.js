@@ -71,7 +71,7 @@ function Main({ onChangeAvatar, onEditProfile, onAddCard }) {
           aria-label="Добавить"
         ></button>
       </section>
-      <section className="elements">
+      <section className="cards">
         {cards.map((card) => (
           <Card
             key={card.cardId}
