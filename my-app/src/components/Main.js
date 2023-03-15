@@ -36,11 +36,7 @@ function Main({ onChangeAvatar, onEditProfile, onAddCard, onCardClick }) {
   return (
     <main className="content">
       <section className="profile">
-        <img
-          className="profile__avatar"
-          style={{ backgroundImage: `url(${userAvatar})` }}
-          alt=""
-        />
+        <img className="profile__avatar" src={userAvatar} alt="Фото профиля" />
         <button
           onClick={() => {
             onChangeAvatar(true);

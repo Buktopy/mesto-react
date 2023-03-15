@@ -9,7 +9,7 @@ function Card(card) {
         onClick={handleCardClick}
         className="card__image"
         alt={card.name}
-        style={{ backgroundImage: `url(${card.link})` }}
+        src={card.link}
       />
       <div className="card__group">
         <h2 className="card__title">{card.name}</h2>
