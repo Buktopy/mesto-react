@@ -6,18 +6,17 @@ import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
 
 function App() {
-  const [popupEditProfileVisibility, setPopupEditProfileVisibility] =
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
     React.useState(false);
-  const [popupChangeAvatarVisibility, setPopupChangeAvatarVisibility] =
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false);
-  const [popupAddCardVisibility, setPopupAddCardVisibility] =
-    React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
 
   function closeAllPopups() {
-    setPopupEditProfileVisibility(false);
-    setPopupChangeAvatarVisibility(false);
-    setPopupAddCardVisibility(false);
+    setIsEditProfilePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsAddPlacePopupOpen(false);
     setSelectedCard({});
   }
 
@@ -25,9 +24,9 @@ function App() {
     <>
       <Header />
       <Main
-        onEditProfile={setPopupEditProfileVisibility}
-        onChangeAvatar={setPopupChangeAvatarVisibility}
-        onAddCard={setPopupAddCardVisibility}
+        onEditProfile={setIsEditProfilePopupOpen}
+        onChangeAvatar={setIsEditAvatarPopupOpen}
+        onAddCard={setIsAddPlacePopupOpen}
         onCardClick={setSelectedCard}
       />
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
@@ -35,8 +34,9 @@ function App() {
       <PopupWithForm
         name="edit-profile"
         title="Редактировать профиль"
-        isOpened={popupEditProfileVisibility}
+        isOpened={isEditProfilePopupOpen}
         onClose={closeAllPopups}
+        buttonText="Сохранить"
       >
         <input
           autoComplete="off"
@@ -66,8 +66,9 @@ function App() {
       <PopupWithForm
         name="edit-avatar"
         title="Обновить аватар"
-        isOpened={popupChangeAvatarVisibility}
+        isOpened={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
+        buttonText="Сохранить"
       >
         <input
           autoComplete="off"
@@ -83,8 +84,9 @@ function App() {
       <PopupWithForm
         name="add-element"
         title="Новое место"
-        isOpened={popupAddCardVisibility}
+        isOpened={isAddPlacePopupOpen}
         onClose={closeAllPopups}
+        buttonText="Добавить"
       >
         <input
           autoComplete="off"
