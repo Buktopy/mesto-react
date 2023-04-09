@@ -18,7 +18,7 @@ class Api {
     }).then((res) => this._checkServerResponse(res));
   }
 
-  getCard() {
+  getCards() {
     return this._makeRequest("cards", "GET");
   }
 
@@ -42,15 +42,14 @@ class Api {
     return this._makeRequest("users/me/avatar", "PATCH", data);
   }
 
-  setLike(_id) {
-    return this._makeRequest(`cards/${_id}/likes`, "PUT");
-  }
-
-  deleteLike(_id) {
-    return this._makeRequest(`cards/${_id}/likes`, "DELETE");
+  // Совмещенный метод запроса- лайк и его удаление
+  setLike(_id, isLiked) {
+    return this._makeRequest(
+      `cards/${_id}/likes`,
+      `${isLiked ? "PUT" : "DELETE"}`
+    );
   }
 }
-
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-60",
   headers: {
