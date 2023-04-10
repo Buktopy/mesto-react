@@ -25,7 +25,7 @@ function PopupWithForm({
             className="popup__button"
             aria-label="Подтвердить"
           >
-            {buttonText}
+            {buttonText || "Сохранить"}
           </button>
         </form>
       </div>

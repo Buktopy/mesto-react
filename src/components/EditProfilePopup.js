@@ -33,12 +33,13 @@ function EditProfilePopup({ isOpened, onClose, onUpdateUser, onLoading }) {
       onSubmit={handleSubmit}
       isOpened={isOpened}
       onClose={onClose}
-      buttonText={onLoading ? "Сохранение..." : "Сохранить"}
+      buttonText={onLoading && "Сохранение..."}
       name="edit-profile"
       title="Редактировать профиль"
     >
       <input
         onChange={handleChangeName}
+        value={name}
         autoComplete="off"
         required
         name="name"
@@ -52,6 +53,7 @@ function EditProfilePopup({ isOpened, onClose, onUpdateUser, onLoading }) {
       <span className="name-input-error popup__input-error"></span>
       <input
         onChange={handleChangeAbout}
+        value={about}
         autoComplete="off"
         required
         name="about"
