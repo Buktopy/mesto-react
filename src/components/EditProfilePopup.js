@@ -39,7 +39,7 @@ function EditProfilePopup({ isOpened, onClose, onUpdateUser, onLoading }) {
     >
       <input
         onChange={handleChangeName}
-        value={name}
+        value={name || ""}
         autoComplete="off"
         required
         name="name"
@@ -53,7 +53,7 @@ function EditProfilePopup({ isOpened, onClose, onUpdateUser, onLoading }) {
       <span className="name-input-error popup__input-error"></span>
       <input
         onChange={handleChangeAbout}
-        value={about}
+        value={about || ""}
         autoComplete="off"
         required
         name="about"
